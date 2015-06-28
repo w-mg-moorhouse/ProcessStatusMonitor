@@ -1,0 +1,6 @@
+{
+	"globalTimeout" : 30,
+	"process":{
+	"username" : "plex"
+	}
+}
