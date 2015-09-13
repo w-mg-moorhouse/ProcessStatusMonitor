@@ -1,0 +1,12 @@
+[Unit]
+Description=Process Status Monitor
+After=syslog.target
+
+[Service]
+Type=forking
+User=psm-user
+ExecStart=/bin/pcm.py --daemon
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

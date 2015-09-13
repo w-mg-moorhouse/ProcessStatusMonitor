@@ -1,0 +1,35 @@
+#!/bin/bash
+
+username="psm-user"
+
+addSudoersFile ()
+{
+	#add sudoers to /etc/sudoers.d
+	# add psm-user
+	
+	#if file does not exist
+	if [ -f /etc/sudoers.d/"$username" ]
+	then
+		echo "Sudoers file exists."
+	else
+		touch /etc/sudoers.d/"$username"
+		echo "$username ALL=NOPASSWD: /usr/bin/shutdown -h 0" >> /etc/sudoers.d/"$username"
+	fi
+}
+
+if [ "$EUID" -ne 0]
+	then echo "Must be run as root"
+	exit
+fi
+
+if id -u "$1" > /dev/null 2>&1; then
+	echo "User exists"
+	# check user permissions in sudo
+		addSudoersFile()
+	exit
+else
+	useradd "$username" --system -m
+	addSudoersFile()
+fi
+
+

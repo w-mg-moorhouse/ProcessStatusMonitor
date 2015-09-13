@@ -12,7 +12,7 @@ class GlobalConfiguration(object):
     '''
 
 
-    def __init__(self, process, globalTimeout=300, loglevel=10):
+    def __init__(self, process, pidfile="", globalTimeout=300, loglevel=10):
         self.globalTimeout = globalTimeout
         logging.basicConfig(level=loglevel)
         self.globalLoglevel = loglevel
@@ -23,5 +23,4 @@ class GlobalConfiguration(object):
     
     def getGlobalTimeout(self):
         return self.globalTimeout
-    
     

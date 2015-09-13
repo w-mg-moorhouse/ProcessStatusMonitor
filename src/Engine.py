@@ -8,6 +8,7 @@ from ManageProcess import ManageProcess
 from TimeoutCalculator import TimeoutCalculator
 from configuration.configLoader import configurationLoader
 import logging
+from TransmissionStatus import TransmissionStatus
 
 class Engine(object):
     '''
@@ -19,6 +20,7 @@ class Engine(object):
         try:
             self.configuration = configurationLoader.loadConfiguration("resources/wands.json")
             self.timeout = TimeoutCalculator(self.configuration.getGlobalTimeout())
+            self.transStat = TransmissionStatus()
             self.timeout.start()
             self.manageProcess = ManageProcess()
             for proc in self.configuration.getProcesses():
@@ -27,7 +29,10 @@ class Engine(object):
             logging.exception("IOERROR occurred during configuration processing.", e)
         
     def run(self):
-        
+        #could be more generic
+        if self.transStat.checkQueueForCompletion() == False:
+            self.timeout.reset()
+            return
         if self.manageProcess.processesActive():
             self.timeout.reset()
             return
