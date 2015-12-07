@@ -22,7 +22,7 @@ from argparse import RawDescriptionHelpFormatter
 import os
 import sys
 
-from src import Engine
+from src.Engine import *
 from src.conc.daemoniseFunction import DaemonProcess
 
 

@@ -3,8 +3,8 @@ Created on 26 May 2015
 
 @author: will
 '''
-import psutil
 import logging
+import psutil
 
 class ManageProcess(object):
     '''

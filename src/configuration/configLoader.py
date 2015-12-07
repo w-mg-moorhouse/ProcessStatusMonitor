@@ -1,7 +1,7 @@
 
 import json
 
-from configuration.GlobalConfiguration import GlobalConfiguration
+from src.configuration.GlobalConfiguration import GlobalConfiguration
 
 
 class configurationLoader(object):

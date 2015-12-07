@@ -3,13 +3,13 @@ Created on 26 May 2015
 
 @author: will
 '''
-from Action import Action
-from ManageProcess import ManageProcess
-from TimeoutCalculator import TimeoutCalculator
-from configuration.configLoader import configurationLoader
+from src.Action import *
+from src.ManageProcess import *
+from src.TimeoutCalculator import *
+from src.configuration.configLoader import * 
 import logging
-from TransmissionStatus import TransmissionStatus
-from ActiveLogin import ActiveLogin
+from src.TransmissionStatus import *
+from src.ActiveLogin import *
 
 class Engine(object):
     '''
@@ -46,7 +46,7 @@ class Engine(object):
         logging.info("Triggering action")
         Action.action()
 # static creation of engine
-
+@staticmethod
 def executingFunction():
     if executingFunction.engine == None:
         executingFunction.engine = Engine()
